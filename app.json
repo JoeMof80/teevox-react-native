@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-nativewind-starter",
-    "slug": "react-nativewind-starter",
+    "name": "teevox-react-native",
+    "slug": "teevox-react-native",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
