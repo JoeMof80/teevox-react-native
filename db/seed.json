@@ -1,0 +1,236 @@
+[
+  {
+    "category": "wood",
+    "label": "Driver",
+    "name": "Driver",
+    "selected": false
+  },
+  {
+    "category": "wood",
+    "label": "3 Wood",
+    "name": "Three Wood",
+    "selected": false
+  },
+  {
+    "category": "wood",
+    "label": "5 Wood",
+    "name": "Five Wood",
+    "selected": false
+  },
+  {
+    "category": "wood",
+    "label": "7 Wood",
+    "name": "Seven Wood",
+    "selected": false
+  },
+  {
+    "category": "wood",
+    "label": "9 Wood",
+    "name": "Nine Wood",
+    "selected": false
+  },
+  {
+    "category": "hybrid",
+    "label": "1 Hybrid",
+    "name": "One Hybrid",
+    "selected": false
+  },
+  {
+    "category": "hybrid",
+    "label": "2 Hybrid",
+    "name": "Two Hybrid",
+    "selected": false
+  },
+  {
+    "category": "hybrid",
+    "label": "3 Hybrid",
+    "name": "Three Hybrid",
+    "selected": false
+  },
+  {
+    "category": "hybrid",
+    "label": "4 Hybrid",
+    "name": "Four Hybrid",
+    "selected": false
+  },
+  {
+    "category": "hybrid",
+    "label": "5 Hybrid",
+    "name": "Five Hybrid",
+    "selected": false
+  },
+  {
+    "category": "hybrid",
+    "label": "6 Hybrid",
+    "name": "Six Hybrid",
+    "selected": false
+  },
+  {
+    "category": "hybrid",
+    "label": "7 Hybrid",
+    "name": "Seven Hybrid",
+    "selected": false
+  },
+  {
+    "category": "hybrid",
+    "label": "8 Hybrid",
+    "name": "Eight Hybrid",
+    "selected": false
+  },
+  {
+    "category": "hybrid",
+    "label": "9 Hybrid",
+    "name": "Nine Hybrid",
+    "selected": false
+  },
+  {
+    "category": "iron",
+    "label": "1 Iron",
+    "name": "One Iron",
+    "selected": false
+  },
+  {
+    "category": "iron",
+    "label": "2 Iron",
+    "name": "Two Iron",
+    "selected": false
+  },
+  {
+    "category": "iron",
+    "label": "3 Iron",
+    "name": "Three Iron",
+    "selected": false
+  },
+  {
+    "category": "iron",
+    "label": "4 Iron",
+    "name": "Four Iron",
+    "selected": false
+  },
+  {
+    "category": "iron",
+    "label": "5 Iron",
+    "name": "Five Iron",
+    "selected": false
+  },
+  {
+    "category": "iron",
+    "label": "6 Iron",
+    "name": "Six Iron",
+    "selected": false
+  },
+  {
+    "category": "iron",
+    "label": "7 Iron",
+    "name": "Seven Iron",
+    "selected": false
+  },
+  {
+    "category": "iron",
+    "label": "8 Iron",
+    "name": "Eight Iron",
+    "selected": false
+  },
+  {
+    "category": "iron",
+    "label": "9 Iron",
+    "name": "Nine Iron",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "44 Wedge",
+    "name": "Fourty four degree Wedge",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "45 Wedge",
+    "name": "Fourty five degree Wedge",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "46 Wedge",
+    "name": "Fourty six degree Wedge",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "47 Wedge",
+    "name": "Fourty seven degree Wedge",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "48 Pitching Wedge",
+    "name": "Fourty eight degree Pitching Wedge",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "50 Wedge",
+    "name": "Fifty degree Wedge",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "52 Wedge",
+    "name": "Fifty two degree Wedge",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "53 Wedge",
+    "name": "Fifty three degree Wedge",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "54 Wedge",
+    "name": "Fifty four degree Wedge",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "55 Wedge",
+    "name": "Fifty five degree Wedge",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "56 Sand Wedge",
+    "name": "Fifty six degree Sand Wedge",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "58 Wedge",
+    "name": "Fifty eight degree Wedge",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "60 Lob Wedge",
+    "name": "Sixty degree Lob Wedge",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "62 Wedge",
+    "name": "Sixty two degree Wedge",
+    "selected": false
+  },
+  {
+    "category": "wedge",
+    "label": "64 Wedge",
+    "name": "Sixty four degree Wedge",
+    "selected": false
+  },
+  {
+    "category": "putter",
+    "label": "Putter",
+    "name": "Putter",
+    "selected": false
+  }
+]
