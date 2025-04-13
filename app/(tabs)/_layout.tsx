@@ -1,7 +1,6 @@
 import { Tabs } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
-
 import { HapticTab } from "@/components/HapticTab";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import TabBarBackground from "@/components/ui/TabBarBackground";
@@ -20,10 +19,7 @@ export default function TabLayout() {
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: "absolute",
-          },
+          ios: { position: "absolute" },
           default: {},
         }),
       }}
@@ -32,7 +28,7 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Prepare",
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({ color }: { color: string }) => (
             <IconSymbol
               size={28}
               name="figure.strengthtraining.functional"
@@ -45,7 +41,7 @@ export default function TabLayout() {
         name="practice"
         options={{
           title: "Practice",
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({ color }: { color: string }) => (
             <IconSymbol
               size={28}
               name="figure.strengthtraining.traditional"
@@ -58,7 +54,8 @@ export default function TabLayout() {
         name="play"
         options={{
           title: "Play",
-          tabBarIcon: ({ color }) => (
+          unmountOnBlur: false, // Keep play tab mounted
+          tabBarIcon: ({ color }: { color: string }) => (
             <IconSymbol size={28} name="figure.golf" color={color} />
           ),
         }}
@@ -67,7 +64,7 @@ export default function TabLayout() {
         name="review"
         options={{
           title: "Review",
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({ color }: { color: string }) => (
             <IconSymbol size={28} name="figure.run" color={color} />
           ),
         }}
