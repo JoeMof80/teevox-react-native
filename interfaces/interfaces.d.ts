@@ -1,4 +1,3 @@
-// Location interface
 interface Location2 {
   address: string;
   city: string;
@@ -8,48 +7,43 @@ interface Location2 {
   longitude: number;
 }
 
-// Hole interface
 interface Hole {
   par: number;
-  yardage: number;
-  handicap: number;
+  yardage?: number;
+  handicap?: number;
 }
 
-// Tee interface
 interface Tee {
   tee_name: string;
-  course_rating: number;
-  slope_rating: number;
-  bogey_rating: number;
-  total_yards: number;
-  total_meters: number;
+  course_rating?: number;
+  slope_rating?: number;
+  bogey_rating?: number;
+  total_yards?: number;
+  total_meters?: number;
   number_of_holes: number;
-  par_total: number;
-  front_course_rating: number;
-  front_slope_rating: number;
-  front_bogey_rating: number;
-  back_course_rating: number;
-  back_slope_rating: number;
-  back_bogey_rating: number;
+  par_total?: number;
+  front_course_rating?: number;
+  front_slope_rating?: number;
+  front_bogey_rating?: number;
+  back_course_rating?: number;
+  back_slope_rating?: number;
+  back_bogey_rating?: number;
   holes: Hole[];
 }
 
-// Tees interface (gender-separated)
 interface Tees {
   female: Tee[];
   male: Tee[];
 }
 
-// Golf Course interface
 interface GolfCourse {
   id: number;
   club_name: string;
   course_name: string;
-  location: Location2;
+  location?: Location2;
   tees: Tees;
 }
 
-// Example usage (optional)
 const exampleCourse: GolfCourse = {
   id: 99,
   club_name: "Murray Golf Club",

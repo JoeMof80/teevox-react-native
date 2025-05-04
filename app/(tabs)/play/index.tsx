@@ -29,7 +29,6 @@ function CoursesScreen() {
     reset,
   } = useFetch(fetchFn(searchQuery), false);
 
-  // Load "Nearby" (Portal) only once per screen mount
   useFocusEffect(
     useCallback(() => {
       if (!hasLoadedNearby.current) {
@@ -46,7 +45,6 @@ function CoursesScreen() {
     }, []),
   );
 
-  // Search handling with deduplication
   useEffect(() => {
     const timeoutId = setTimeout(async () => {
       const trimmedQuery = searchQuery.trim();
@@ -63,7 +61,6 @@ function CoursesScreen() {
     return () => clearTimeout(timeoutId);
   }, [searchQuery, loadSearchCourses, reset]);
 
-  // Segment change for "Recent"
   const handleSegmentChange = async (index: number) => {
     setSelectedIndex(index);
     if (index === 1 && !recentCourses && !searchQuery.trim()) {
@@ -75,7 +72,6 @@ function CoursesScreen() {
     }
   };
 
-  // Determine which courses to display
   const displayedCourses =
     searchQuery.trim() || isSearchFocused
       ? searchCourses
@@ -84,14 +80,16 @@ function CoursesScreen() {
       : recentCourses;
 
   return (
-    <SafeAreaView className="bg-neutral-100 dark:bg-neutral-950 flex-1">
+    <SafeAreaView
+      className="bg-neutral-100 dark:bg-neutral-950 flex-1"
+      edges={["bottom"]}
+    >
       <KeyboardAvoidingView
         className="flex-1"
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={-bottom}
+        keyboardVerticalOffset={bottom}
       >
-        {/* Fixed Header */}
-        <View className="bg-white dark:bg-black">
+        <View>
           <SearchBar
             value={searchQuery}
             onChangeText={setSearchQuery}
@@ -105,12 +103,10 @@ function CoursesScreen() {
               onChange={(event) =>
                 handleSegmentChange(event.nativeEvent.selectedSegmentIndex)
               }
-              className="mx-5 mb-2"
               style={{ marginTop: 0, margin: 16 }}
             />
           )}
         </View>
-        {/* FlatList */}
         <FlatList
           data={
             searchLoading || isNearbyLoading || isRecentLoading

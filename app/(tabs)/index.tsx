@@ -45,10 +45,8 @@ export default function PrepareScreen() {
   const { db, records, updateSelected, dropTable, isInitialized } =
     useDatabase(GOLFCLUBS);
 
-  // Group records whenever they change
   useEffect(() => {
     if (isInitialized && records.length > 0) {
-      // handleDropTable();
       const groupedClubs = groupClubsByCategory(records);
       setGolfClubs(groupedClubs);
       {
