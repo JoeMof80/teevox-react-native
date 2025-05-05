@@ -1,4 +1,13 @@
-interface Location2 {
+interface GolfClub {
+  $id: string;
+  label: string;
+  name: string;
+  category: string;
+  order: number;
+  selected: boolean;
+}
+
+interface GolfCourseLocation {
   address: string;
   city: string;
   state: string;
@@ -40,7 +49,7 @@ interface GolfCourse {
   id: number;
   club_name: string;
   course_name: string;
-  location?: Location2;
+  location?: GolfCourseLocation;
   tees: Tees;
 }
 

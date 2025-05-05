@@ -1,12 +1,12 @@
-import { SearchBar } from "@/components/SearchBar";
 import { CourseItem } from "@/components/CourseItem";
+import { SearchBar } from "@/components/SearchBar";
 import { useBottomTabOverflow } from "@/components/ui/TabBarBackground.ios";
 import { fetchFn, fetchRecentCourses } from "@/services/mockGolfCourses";
 import useFetch from "@/services/useFetch";
 import SegmentedControl from "@react-native-segmented-control/segmented-control";
 import { useFocusEffect } from "expo-router";
-import { useEffect, useState, useRef, useCallback } from "react";
-import { FlatList, KeyboardAvoidingView, View, Platform } from "react-native";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { FlatList, KeyboardAvoidingView, Platform, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 function CoursesScreen() {
