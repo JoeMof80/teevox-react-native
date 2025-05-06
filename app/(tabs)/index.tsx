@@ -32,11 +32,7 @@ export default function PrepareScreen() {
 
   const [golfClubs, setGolfClubs] = useState<GroupedClub[]>([]);
 
-  const {
-    data: golfClubsData,
-    loading: golfClubsLoading,
-    error: golfClubsError,
-  } = useFetch(getGolfClubs);
+  const { data: golfClubsData, loading, error } = useFetch(getGolfClubs);
 
   useEffect(() => {
     if (golfClubsData) {
@@ -63,10 +59,10 @@ export default function PrepareScreen() {
 
   return (
     <SafeAreaView className="bg-neutral-100 dark:bg-neutral-950 flex-1">
-      {golfClubsLoading ? (
+      {loading ? (
         <Text>Loading...</Text>
-      ) : golfClubsError ? (
-        <Text>Error: {golfClubsError?.message}</Text>
+      ) : error ? (
+        <Text>Error: {error?.message}</Text>
       ) : (
         <SectionList
           sections={golfClubs}

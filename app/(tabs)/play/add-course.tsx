@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigation } from "expo-router";
 import GolfCourseForm from "@/components/GolfCourseForm";
 import { Text, TouchableHighlight } from "react-native";
+import { createGolfCourse } from "@/services/appwrite";
 
 export default function GolfCourseFormScreen() {
   const navigation = useNavigation();
@@ -46,7 +47,7 @@ export default function GolfCourseFormScreen() {
 
   const handleSubmit = () => {
     if (canSubmit) {
-      console.log("Submitted Golf Course from Header:", course);
+      createGolfCourse(course);
       setCourse({
         id: 0,
         club_name: "",

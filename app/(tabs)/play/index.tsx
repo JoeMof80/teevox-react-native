@@ -1,7 +1,8 @@
 import { CourseItem } from "@/components/CourseItem";
 import { SearchBar } from "@/components/SearchBar";
 import { useBottomTabOverflow } from "@/components/ui/TabBarBackground.ios";
-import { fetchFn, fetchRecentCourses } from "@/services/mockGolfCourses";
+import { getGolfCourses } from "@/services/appwrite";
+import { fetchFn } from "@/services/mockGolfCourses";
 import useFetch from "@/services/useFetch";
 import SegmentedControl from "@react-native-segmented-control/segmented-control";
 import { useFocusEffect } from "expo-router";
@@ -66,7 +67,7 @@ function CoursesScreen() {
     if (index === 1 && !recentCourses && !searchQuery.trim()) {
       console.log("Fetching Recent courses");
       setIsRecentLoading(true);
-      const courses = await fetchRecentCourses();
+      const courses = await getGolfCourses();
       setRecentCourses(courses);
       setIsRecentLoading(false);
     }
