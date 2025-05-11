@@ -5,9 +5,15 @@ import { getGolfCourses } from "@/services/appwrite";
 import { fetchFn } from "@/services/mockGolfCourses";
 import useFetch from "@/services/useFetch";
 import SegmentedControl from "@react-native-segmented-control/segmented-control";
-import { useFocusEffect } from "expo-router";
+import { Link, useFocusEffect } from "expo-router";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { FlatList, KeyboardAvoidingView, Platform, View } from "react-native";
+import {
+  FlatList,
+  KeyboardAvoidingView,
+  Platform,
+  Text,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 function CoursesScreen() {
@@ -71,6 +77,13 @@ function CoursesScreen() {
       setRecentCourses(courses);
       setIsRecentLoading(false);
     }
+    if (index === 2) {
+      console.log("Fetching Added courses");
+      setIsRecentLoading(true);
+      const courses = await getGolfCourses();
+      setRecentCourses(courses);
+      setIsRecentLoading(false);
+    }
   };
 
   const displayedCourses =
@@ -99,7 +112,7 @@ function CoursesScreen() {
           />
           {!isSearchFocused && (
             <SegmentedControl
-              values={["Nearby", "Recent"]}
+              values={["Nearby", "Recent", "Added"]}
               selectedIndex={selectedIndex}
               onChange={(event) =>
                 handleSegmentChange(event.nativeEvent.selectedSegmentIndex)
@@ -108,6 +121,13 @@ function CoursesScreen() {
             />
           )}
         </View>
+        {selectedIndex === 2 && (
+          <Link href="./play/add-course" asChild>
+            <Text className="my-4 text-center text-blue-500 text-lg">
+              Add a course manually
+            </Text>
+          </Link>
+        )}
         <FlatList
           data={
             searchLoading || isNearbyLoading || isRecentLoading
@@ -129,7 +149,10 @@ function CoursesScreen() {
               ? `item-${index}`
               : item.id.toString()
           }
-          contentContainerStyle={{ paddingBottom: bottom }}
+          contentContainerStyle={{
+            marginHorizontal: 16,
+            paddingBottom: bottom + 20,
+          }}
           keyboardShouldPersistTaps="handled"
         />
       </KeyboardAvoidingView>
