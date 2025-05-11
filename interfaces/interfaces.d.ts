@@ -7,6 +7,13 @@ interface GolfClub {
   selected: boolean;
 }
 
+interface GolfBall {
+  $id: string;
+  manufacturer: string;
+  name: string;
+  [key: string]: any;
+}
+
 interface GolfCourseLocation {
   address: string;
   city: string;
@@ -126,3 +133,13 @@ const exampleCourse: GolfCourse = {
     ],
   },
 };
+
+interface Item {
+  id: string;
+  label: string;
+}
+
+interface ConcatenatedBall {
+  id: string;
+  label: string;
+}
