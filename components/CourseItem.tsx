@@ -1,14 +1,9 @@
-import { Colors } from "@/constants/Colors";
-import { IconSymbol } from "@/components/ui/IconSymbol.ios";
 import { ShimmerSkeleton } from "@/components/ShimmerSkeleton";
+import { useGolfContext } from "@/context/play";
 import { Link } from "expo-router";
 import { useColorScheme } from "nativewind";
-import {
-  Text,
-  TouchableHighlight,
-  View,
-  LayoutChangeEvent,
-} from "react-native";
+import { Text, View } from "react-native";
+import ListItem from "./ListItem";
 
 interface CourseItemProps {
   item: GolfCourse;
@@ -28,18 +23,7 @@ export const CourseItem = ({
   searchQuery,
 }: CourseItemProps) => {
   const { colorScheme } = useColorScheme();
-
-  const onTextLayout = (event: LayoutChangeEvent) => {
-    const { height } = event.nativeEvent.layout;
-    console.log(`Text height: ${height}px, index: ${index}`);
-  };
-
-  const onSkeletonLayout = (event: LayoutChangeEvent) => {
-    const { height } = event.nativeEvent.layout;
-    console.log(
-      `Skeleton row height: ${height}px, padding: 16px, shimmer: 14px, index: ${index}`,
-    );
-  };
+  const { setSelectedCourse } = useGolfContext();
 
   if (error && searchQuery.trim()) {
     return (
@@ -54,10 +38,9 @@ export const CourseItem = ({
   if (isLoading) {
     return (
       <View
-        className={`bg-white dark:bg-neutral-800 mx-5 ${
+        className={`bg-white dark:bg-neutral-800 ${
           index === 0 ? "rounded-t-xl" : ""
         } ${index === 9 ? "rounded-b-xl" : ""}`}
-        onLayout={onSkeletonLayout}
       >
         <View
           className={`flex flex-row justify-between items-center ml-5 pr-5 ${
@@ -76,27 +59,18 @@ export const CourseItem = ({
 
   return (
     <Link href={`./play/round?id=${item.id}`} asChild>
-      <TouchableHighlight
-        underlayColor={
-          Colors[colorScheme ?? "light"].touchableHighlightUnderlayColor
-        }
-        className={`${index === 0 ? "rounded-t-xl" : ""} ${
+      <ListItem
+        label={item.course_name}
+        roundedClasses={`${index === 0 ? "rounded-t-xl" : ""} ${
           index === (displayedCourses?.length ?? 0) - 1 ? "rounded-b-xl" : ""
-        } bg-white dark:bg-neutral-800 mx-5`}
-      >
-        <View
-          className={`flex flex-row justify-between items-center ${
-            index !== (displayedCourses?.length ?? 0) - 1
-              ? "border-b border-neutral-200 dark:border-neutral-600"
-              : ""
-          } ml-5 py-3 pr-5`}
-        >
-          <Text className="text-lg dark:text-white" onLayout={onTextLayout}>
-            {item.course_name}
-          </Text>
-          <IconSymbol name="chevron.right" color="gray" size={16} />
-        </View>
-      </TouchableHighlight>
+        }`}
+        borderClasses={`${
+          index !== (displayedCourses?.length ?? 0) - 1
+            ? "border-b border-neutral-200 dark:border-neutral-600"
+            : ""
+        }`}
+        onPress={() => setSelectedCourse(item)}
+      />
     </Link>
   );
 };

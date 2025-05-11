@@ -1,11 +1,10 @@
-import { IconSymbol } from "@/components/ui/IconSymbol";
+import CheckItem from "@/components/CheckItem";
 import { useBottomTabOverflow } from "@/components/ui/TabBarBackground.ios";
-import { Colors } from "@/constants/Colors";
 import { getGolfClubs, updateGolfClub } from "@/services/appwrite";
 import useFetch from "@/services/useFetch";
 import { useColorScheme } from "nativewind";
 import { useEffect, useState } from "react";
-import { SectionList, Text, TouchableHighlight, View } from "react-native";
+import { SectionList, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 interface GroupedClub {
@@ -72,34 +71,19 @@ export default function PrepareScreen() {
             paddingBottom: bottom,
           }}
           renderItem={({ item, index, section }) => (
-            <TouchableHighlight
-              underlayColor={
-                Colors[colorScheme ?? "light"].touchableHighlightUnderlayColor
-              }
-              className={`${index === 0 ? "rounded-t-xl" : ""} ${
+            <CheckItem
+              item={item}
+              roundedClasses={`${index === 0 ? "rounded-t-xl" : ""} ${
                 index === section.data.length - 1 ? "rounded-b-xl" : ""
-              } bg-white dark:bg-neutral-800`}
+              }`}
+              borderClasses={`${
+                index !== section.data.length - 1
+                  ? "border-b border-neutral-400 dark:border-neutral-600"
+                  : ""
+              }`}
+              selected={item.selected}
               onPress={() => onPress(item)}
-            >
-              <View
-                className={`flex flex-row justify-between items-center ${
-                  index !== section.data.length - 1
-                    ? "border-b border-neutral-200 dark:border-neutral-600"
-                    : ""
-                } ml-5 py-3 pr-5`}
-              >
-                <Text className="text-lg dark:text-white">{item.label}</Text>
-                <IconSymbol
-                  name="checkmark"
-                  color={
-                    item.selected
-                      ? Colors[colorScheme ?? "light"].checkmarkColor
-                      : "transparent"
-                  }
-                  size={16}
-                />
-              </View>
-            </TouchableHighlight>
+            />
           )}
           renderSectionHeader={({ section: { title } }) => (
             <Text className="text-sm uppercase ml-5 mt-10 mb-2 text-neutral-400 dark:text-neutral-600">
