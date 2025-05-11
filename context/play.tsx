@@ -4,12 +4,12 @@ interface PlayContextType {
   selectedCourse: GolfCourse | null;
   selectedBallType: string | null;
   selectedBallNumber: number | null;
-  selectedGender: string | null;
+  selectedGender: "male" | "female" | null;
   selectedTee: string | null;
   setSelectedCourse: (course: GolfCourse | null) => void;
   setSelectedBallType: (ballType: string | null) => void;
-  setSelectedBallNumber: (ballNumber: number | null) => void;
-  setSelectedGender: (tee: string | null) => void;
+  setSelectedBallNumber: (ballNumber: 1 | 2 | 3 | 4 | null) => void;
+  setSelectedGender: (gender: "male" | "female" | null) => void;
   setSelectedTee: (tee: string | null) => void;
 }
 
@@ -20,10 +20,12 @@ export const PlayProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [selectedCourse, setSelectedCourse] = useState<GolfCourse | null>(null);
   const [selectedBallType, setSelectedBallType] = useState<string | null>(null);
-  const [selectedBallNumber, setSelectedBallNumber] = useState<number | null>(
-    null,
-  );
-  const [selectedGender, setSelectedGender] = useState<string | null>(null);
+  const [selectedBallNumber, setSelectedBallNumber] = useState<
+    1 | 2 | 3 | 4 | null
+  >(null);
+  const [selectedGender, setSelectedGender] = useState<
+    "male" | "female" | null
+  >(null);
   const [selectedTee, setSelectedTee] = useState<string | null>(null);
 
   return (
@@ -46,7 +48,7 @@ export const PlayProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export const useGolfContext = () => {
+export const usePlayContext = () => {
   const context = useContext(PlayContext);
   if (!context) {
     throw new Error("useGolfContext must be used within a GolfProvider");

@@ -1,9 +1,9 @@
 import { ShimmerSkeleton } from "@/components/ShimmerSkeleton";
-import { useGolfContext } from "@/context/play";
+import { usePlayContext } from "@/context/play";
 import { Link } from "expo-router";
 import { useColorScheme } from "nativewind";
 import { Text, View } from "react-native";
-import ListItem from "./ListItem";
+import LinkItem from "./LinkItem";
 
 interface CourseItemProps {
   item: GolfCourse;
@@ -23,7 +23,7 @@ export const CourseItem = ({
   searchQuery,
 }: CourseItemProps) => {
   const { colorScheme } = useColorScheme();
-  const { setSelectedCourse } = useGolfContext();
+  const { setSelectedCourse } = usePlayContext();
 
   if (error && searchQuery.trim()) {
     return (
@@ -59,7 +59,7 @@ export const CourseItem = ({
 
   return (
     <Link href={`./play/round?id=${item.id}`} asChild>
-      <ListItem
+      <LinkItem
         label={item.course_name}
         roundedClasses={`${index === 0 ? "rounded-t-xl" : ""} ${
           index === (displayedCourses?.length ?? 0) - 1 ? "rounded-b-xl" : ""

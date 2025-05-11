@@ -4,6 +4,8 @@ import golfClubs from "../db/seed.json";
 const DATABASE_ID = process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID!;
 const GOLFCLUB_COLLECTION_ID =
   process.env.EXPO_PUBLIC_APPWRITE_GOLFCLUB_COLLECTION_ID!;
+const GOLFBALL_COLLECTION_ID =
+  process.env.EXPO_PUBLIC_APPWRITE_GOLFBALL_COLLECTION_ID!;
 const GOLFCOURSE_COLLECTION_ID =
   process.env.EXPO_PUBLIC_APPWRITE_GOLFCOURSE_COLLECTION_ID!;
 
@@ -59,6 +61,21 @@ export async function getGolfClubs() {
 
     console.log("Fetched documents:", response.documents);
     return response.documents as unknown as GolfClub[];
+  } catch (error) {
+    console.error("Error creating documents", error);
+  }
+}
+
+export async function getGolfBalls() {
+  try {
+    let response = await databases.listDocuments(
+      DATABASE_ID,
+      GOLFBALL_COLLECTION_ID,
+      [Query.limit(50), Query.orderAsc("manufacturer"), Query.orderAsc("name")],
+    );
+
+    console.log("Fetched documents:", response.documents);
+    return response.documents as unknown as GolfBall[];
   } catch (error) {
     console.error("Error creating documents", error);
   }
