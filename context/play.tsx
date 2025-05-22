@@ -1,11 +1,13 @@
 import React, { createContext, useContext, useState } from "react";
 
 interface PlayContextType {
+  liveRound: Round | null;
   selectedCourse: GolfCourse | null;
   selectedBallType: string | null;
   selectedBallNumber: number | null;
   selectedGender: "male" | "female" | null;
   selectedTee: string | null;
+  setLiveRound: (round: Round | null) => void;
   setSelectedCourse: (course: GolfCourse | null) => void;
   setSelectedBallType: (ballType: string | null) => void;
   setSelectedBallNumber: (ballNumber: 1 | 2 | 3 | 4 | null) => void;
@@ -18,6 +20,7 @@ const PlayContext = createContext<PlayContextType | undefined>(undefined);
 export const PlayProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const [liveRound, setLiveRound] = useState<Round | null>(null);
   const [selectedCourse, setSelectedCourse] = useState<GolfCourse | null>(null);
   const [selectedBallType, setSelectedBallType] = useState<string | null>(null);
   const [selectedBallNumber, setSelectedBallNumber] = useState<
@@ -31,11 +34,13 @@ export const PlayProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <PlayContext.Provider
       value={{
+        liveRound,
         selectedCourse,
         selectedBallType,
         selectedBallNumber,
         selectedGender,
         selectedTee,
+        setLiveRound,
         setSelectedCourse,
         setSelectedBallType,
         setSelectedBallNumber,

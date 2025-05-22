@@ -7,6 +7,7 @@ const screens = [
   { name: "round", title: "Round" },
   { name: "select-ball", title: "Ball" },
   { name: "select-tee", title: "Tee" },
+  { name: "scorecard", title: "Score" },
 ];
 
 export default function PlayLayout() {

@@ -1,7 +1,6 @@
 import { ShimmerSkeleton } from "@/components/ShimmerSkeleton";
 import { usePlayContext } from "@/context/play";
 import { Link } from "expo-router";
-import { useColorScheme } from "nativewind";
 import { Text, View } from "react-native";
 import LinkItem from "./LinkItem";
 
@@ -22,8 +21,14 @@ export const CourseItem = ({
   error,
   searchQuery,
 }: CourseItemProps) => {
-  const { colorScheme } = useColorScheme();
-  const { setSelectedCourse } = usePlayContext();
+  const {
+    setLiveRound,
+    setSelectedBallType,
+    setSelectedBallNumber,
+    setSelectedGender,
+    setSelectedTee,
+    setSelectedCourse,
+  } = usePlayContext();
 
   if (error && searchQuery.trim()) {
     return (
@@ -69,7 +74,14 @@ export const CourseItem = ({
             ? "border-b border-neutral-200 dark:border-neutral-600"
             : ""
         }`}
-        onPress={() => setSelectedCourse(item)}
+        onPress={() => {
+          setLiveRound(null);
+          setSelectedBallType(null);
+          setSelectedBallNumber(null);
+          setSelectedGender(null);
+          setSelectedTee(null);
+          setSelectedCourse(item);
+        }}
       />
     </Link>
   );

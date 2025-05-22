@@ -134,6 +134,28 @@ const exampleCourse: GolfCourse = {
   },
 };
 
+interface Round {
+  courseId: Int;
+  holes: Hole[];
+  gender: String;
+  tee: String;
+  start: Date;
+  end?: Date;
+}
+
+interface Hole {
+  strokes: Stroke[];
+  par: Int;
+  start: Date;
+  end?: Date;
+}
+
+interface Stroke {
+  club?: Club;
+  distance?: Int;
+  end?: Date;
+}
+
 interface Item {
   id: string;
   label: string;
